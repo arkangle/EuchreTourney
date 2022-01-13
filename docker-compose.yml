@@ -1,0 +1,21 @@
+version: "3"
+services:
+  fpm:
+    stdin_open: true
+    tty: true
+    build:
+      context: .
+      args:
+        USERID: ${UID}
+    volumes:
+      - ./app:/opt/app
+      - ./conf/php.ini:/etc/php/8.1/fpm/php.ini
+
+  web:
+    stdin_open: true
+    tty: true
+    image: nginx:mainline-alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./conf/nginx-default.conf:/etc/nginx/conf.d/default.conf
