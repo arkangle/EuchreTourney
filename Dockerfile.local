@@ -19,6 +19,7 @@ php8.0-curl \
 php8.0 \
 wget \
 unzip \
+inotify-tools \
 && wget -O composer-setup.php https://getcomposer.org/installer \
 && php composer-setup.php --install-dir=/usr/bin --filename=composer \
 && rm composer-setup.php \
