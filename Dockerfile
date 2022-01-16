@@ -12,8 +12,16 @@ software-properties-common \
 php8.0-fpm \
 php8.0-cli \
 php8.0-mysql \
+php8.0-xdebug \
+php8.0-xml \
+php8.0-mbstring \
+php8.0-curl \
 php8.0 \
-composer \
+wget \
+unzip \
+&& wget -O composer-setup.php https://getcomposer.org/installer \
+&& php composer-setup.php --install-dir=/usr/bin --filename=composer \
+&& rm composer-setup.php \
 && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
 && adduser --disabled-password --gecos "" --uid $USERID app
 
@@ -25,6 +33,7 @@ RUN cd /tmp/conf \
 && mkdir /run/php && chown app:app /run/php \
 && mv php-pool-www.conf /etc/php/8.0/fpm/pool.d/www.conf
 
+ENV PATH "/opt/app/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 USER app
 WORKDIR "/opt/app"
 ENTRYPOINT ["/entrypoint.sh"]
