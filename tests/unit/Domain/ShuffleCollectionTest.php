@@ -3,7 +3,6 @@ declare(strict_types=1);
 namespace Domain;
 require __DIR__ . "/../../../vendor/autoload.php";
 
-use Domain\ShuffleCollection;
 use PHPUnit\Framework\TestCase;
 
 class ShuffleCollectionTest extends TestCase
@@ -13,10 +12,17 @@ class ShuffleCollectionTest extends TestCase
   private $Collection;
   protected function setUp(): void
   {
-    $this->Collection = new ShuffleCollection();
+    $tests = [];
     for($i = 1; $i<=4; $i++) {
-      $this->Collection->add("Test $i");
+      $tests[] = "Test $i";
     }
+    $this->Collection = new ShuffleCollection($tests);
+  }
+
+  function testItems()
+  {
+    $expected = ["Test 1", "Test 2", "Test 3", "Test 4"];
+    $this->assertEquals($expected, $this->Collection->items());
   }
 
   function testAddAndCount()

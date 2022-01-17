@@ -8,6 +8,14 @@ class ShuffleCollection implements \Iterator, \Countable
   private $position = 0;
   protected $itemType = "string";
 
+  function __construct(array $items = [])
+  {
+    foreach($items as $item) {
+      $this->validateType($item);
+    }
+    $this->items = $items;
+  }
+
   function add($item): void
   {
     $this->validateType($item);
@@ -25,14 +33,19 @@ class ShuffleCollection implements \Iterator, \Countable
     }
   }
 
-  function count(): int
+  function items(): array
   {
-    return count($this->items);
+    return $this->items;
   }
-  
+
   function shuffle(): void
   {
     shuffle($this->items);
+  }
+
+  function count(): int
+  {
+    return count($this->items);
   }
 
   function rewind(): void

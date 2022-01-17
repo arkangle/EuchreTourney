@@ -3,8 +3,6 @@ declare(strict_types=1);
 namespace Domain;
 require __DIR__ . "/../../../vendor/autoload.php";
 
-use Domain\Player;
-use Domain\PlayerCollection;
 use PHPUnit\Framework\TestCase;
 
 class PlayerCollectionTest extends TestCase
