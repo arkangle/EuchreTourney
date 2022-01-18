@@ -4,4 +4,14 @@
       <directory>tests/unit</directory>
     </testsuite>
   </testsuites>
+  <!--
+  <coverage pathCoverage="false" cacheDirectory="/tmp">
+    <include>
+      <directory suffix=".php">src</directory>
+    </include>
+    <report>
+      <text outputFile="/dev/stdout" />
+    </report>
+  </coverage>
+  -->
 </phpunit>

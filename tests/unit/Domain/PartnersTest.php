@@ -7,20 +7,21 @@ use PHPUnit\Framework\TestCase;
 
 class PartnersTest extends TestCase
 {
-  private $Player1;
-  private $Player2;
+  private $Players = [];
   private $Partners;
 
   protected function setUp(): void
   {
-    $this->Player1 = new Player("Player 1");
-    $this->Player2 = new Player("Player 2");
-    $this->Partners = new Partners($this->Player1, $this->Player2);
+    $this->Players[] = new Player("Player 1");
+    $this->Players[] = new Player("Player 2");
+    $this->Partners = new Partners($this->Players[0], $this->Players[1]);
   }
   
   function testHasPlayerIsTrue()
   {
-    $this->assertTrue($this->Partners->hasPlayer($this->Player1));
+    for($i = 0; $i<2; $i++) {
+      $this->assertTrue($this->Partners->hasPlayer($this->Players[$i]));
+    }
   }
   function testHasPlayerIsFalse()
   {

@@ -1,5 +1,6 @@
 #!/bin/bash
 if [[ "$1" -eq "tests" ]];then
+  export XDEBUG_MODE=coverage
   while inotifywait -e modify --exclude ".swp$" -r src tests 2> /dev/null; do
     echo ============================================================
     phpunit

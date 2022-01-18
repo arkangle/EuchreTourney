@@ -5,14 +5,14 @@ namespace Domain;
 class Partners
 {
   private $Players;
+
   function __construct(Player $Player1, Player $Player2)
   {
     $this->Players = [$Player1, $Player2];
   }
   
-  function hasPlayer(Player $Player)
+  function hasPlayer(Player $Player): bool
   {
     return in_array($Player, $this->Players);
   }
-
 }
